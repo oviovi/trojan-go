@@ -1,0 +1,36 @@
+#on:
+#  push:
+#    tags:
+#      - "v*.*.*"
+
+on: workflow_dispatch
+
+name: build-test2
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Get branch name (merge)
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
+
+      - name: Get branch name (pull request)
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
+
+      - name: 打印自定义环境变量BRANCH_NAME值
+        run: echo ${{ env.BRANCH_NAME }}
+
+      - name: 给管道变量设置值
+        id: vars
+        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+
+      - name: 获取上一步骤设置的值
+        run: echo ${{ steps.vars.outputs.short_ref }}
+        
