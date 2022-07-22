@@ -52,7 +52,7 @@ jobs:
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
           local_path: ${{ env.ENV_ACTION_PATH }}/version
-          remote_path: trojan-go/${{ env.TAG_NAME }}
+          remote_path: trojan-go/${{ env.BRANCH_NAME }}
           clean: true
 
       - name: Dump GitHub context
