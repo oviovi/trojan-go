@@ -36,4 +36,5 @@ jobs:
           
       - name: 查看版本
         run: |
-          ${GITHUB_ACTION_PATH}/build/linux-amd64/trojan-go -version
+          chmod 777 -R ${PWD}/build
+          ${PWD}/build/linux-amd64/trojan-go -version
