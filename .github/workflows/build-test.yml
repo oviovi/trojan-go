@@ -33,3 +33,7 @@ jobs:
       - name: 查看结果文件
         run: |
           find build | xargs ls -ld
+          
+      - name: 查看版本
+        run: |
+          ${GITHUB_ACTION_PATH}/build/linux-amd64/trojan-go -version
