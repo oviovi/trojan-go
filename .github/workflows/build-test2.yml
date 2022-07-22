@@ -34,9 +34,11 @@ jobs:
       - name: 获取上一步骤设置的值
         run: echo ${{ steps.vars.outputs.short_ref }}
         
-      - name: 打印GITHUB_ACTION_PATH
-        run: echo "------$GITHUB_ACTION_PATH" 
-             echo "======${{GITHUB.ACTION_PATH}}" 
+      - name: 设置ENV_ACTION_PATH值
+        run: echo "ENV_ACTION_PATH=${GITHUB_ACTION_PATH}" >> $GITHUB_ENV
+        
+      - name: 打印自定义环境变量ENV_ACTION_PATH
+        run: echo ${{env.ENV_ACTION_PATH}}
         
       - name: 打印
         run: echo ${PWD} && ls -l ${PWD}      
