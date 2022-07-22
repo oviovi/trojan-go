@@ -34,7 +34,7 @@ jobs:
       - name: 获取上一步骤设置的值
         run: echo ${{ steps.vars.outputs.short_ref }}
         
-      - name: Get branch name (merge)
+      - name: 设置ENV_ACTION_PATH值
         shell: bash
         run: echo "ENV_ACTION_PATH=$(echo ${PWD})" >> $GITHUB_ENV
         
