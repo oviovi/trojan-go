@@ -30,6 +30,6 @@ jobs:
         run: |
           make release -j$(nproc)
           
-      - name: LS
+      - name: 查看结果文件
         run: |
-          ls build
+          find build | xargs ls -ld
