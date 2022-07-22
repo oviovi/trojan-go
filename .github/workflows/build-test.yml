@@ -30,6 +30,10 @@ jobs:
         run: |
           make release -j$(nproc)
           
+      - name: 设置ENV_ACTION_PATH值
+        shell: bash
+        run: echo "ENV_ACTION_PATH=$(echo ${PWD})" >> $GITHUB_ENV
+          
       - name: 查看结果文件
         run: |
           find build | xargs ls -ld
@@ -46,7 +50,7 @@ jobs:
           secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
-          local_path: ${{ github.GITHUB_ACTION_PATH }}/build
+          local_path: ${{ env.ENV_ACTION_PATH }}/build
           remote_path: trojan-go/${{ env.TAG_NAME }}
           clean: true
           
