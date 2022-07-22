@@ -34,3 +34,11 @@ jobs:
       - name: 获取上一步骤设置的值
         run: echo ${{ steps.vars.outputs.short_ref }}
         
+      - name: 打印GITHUB_ACTION_PATH
+        run: echo ${GITHUB_ACTION_PATH}  
+        
+      - name: 打印
+        run: echo ${PWD}       
+        
+        
+        
