@@ -50,7 +50,7 @@ jobs:
           secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
-          local_path: ${{ env.ENV_ACTION_PATH }}/build
+          local_path: ${{ env.ENV_ACTION_PATH }}/build/*amd64
           remote_path: trojan-go/${{ env.TAG_NAME }}
           clean: true
           
