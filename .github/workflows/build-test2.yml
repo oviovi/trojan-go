@@ -40,6 +40,17 @@ jobs:
       - name: 打印
         run: echo ${PWD} && ls -l ${PWD}      
 
+      - name: 上传文件Tencent Cloud COS Action
+        uses: TencentCloud/cos-action@v1
+        with:
+          secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
+          secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
+          cos_bucket: ${{ secrets.COS_BUCKET }}
+          cos_region: ${{ secrets.COS_REGION }}
+          local_path: ${{ github.GITHUB_ACTION_PATH }}/version
+          remote_path: trojan-go/${{ env.TAG_NAME }}
+          clean: true
+
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
