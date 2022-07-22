@@ -35,7 +35,7 @@ jobs:
         run: echo ${{ steps.vars.outputs.short_ref }}
         
       - name: 打印GITHUB_ACTION_PATH
-        run: echo ${{env.GITHUB_ACTION_PATH}} 
+        run: echo "${{env.GITHUB_ACTION_PATH}}" 
         
       - name: 打印
         run: echo ${PWD} && ls -l ${PWD}      
