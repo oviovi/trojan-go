@@ -34,6 +34,10 @@ jobs:
       - name: 获取上一步骤设置的值
         run: echo ${{ steps.vars.outputs.short_ref }}
         
+      - name: Get branch name (merge)
+        shell: bash
+        run: echo "ENV_ACTION_PATH=$(echo ${PWD})" >> $GITHUB_ENV
+        
       - name: 查看目录文件=>GITHUB_ACTION_PATH
         run: ls -l ${GITHUB_ACTION_PATH}
         
@@ -47,7 +51,7 @@ jobs:
           secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
-          local_path: "${GITHUB_ACTION_PATH}/version"
+          local_path: ${{ env.ENV_ACTION_PATH }}/version
           remote_path: trojan-go/${{ env.TAG_NAME }}
           clean: true
 
