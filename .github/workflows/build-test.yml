@@ -20,7 +20,7 @@ jobs:
 
       - name: Build
         run: |
-          make release -j$(nproc)
+          make releasetest -j$(nproc)
           
       - name: 设置ENV_ACTION_PATH值
         shell: bash
