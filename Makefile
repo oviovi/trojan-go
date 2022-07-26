@@ -71,6 +71,10 @@ release: geosite.dat geoip.dat geoip-only-cn-private.dat darwin-amd64.zip darwin
 	linux-mips64.zip linux-mips64le.zip freebsd-386.zip freebsd-amd64.zip \
 	windows-386.zip windows-amd64.zip windows-arm.zip windows-armv6.zip windows-armv7.zip windows-arm64.zip
 
+
+releasetest: geosite.dat geoip.dat geoip-only-cn-private.dat darwin-amd64.zip darwin-arm64.zip linux-amd64.zip \
+	linux-arm.zip windows-amd64.zip windows-arm64.zip
+
 darwin-amd64:
 	mkdir -p $(BUILD_DIR)/$@
 	GOARCH=amd64 GOOS=darwin $(GOBUILD)/$@
