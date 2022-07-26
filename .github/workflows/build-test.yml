@@ -34,6 +34,10 @@ jobs:
         run: |
           find build | xargs ls -ld
           
+      - name: 查看zip文件
+        run: |
+          find ${PWD}/*.zip | xargs ls -ld
+          
       - name: 查看版本
         run: |
           chmod 777 -R ${PWD}/build
